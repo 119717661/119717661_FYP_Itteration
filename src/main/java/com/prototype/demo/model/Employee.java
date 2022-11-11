@@ -8,6 +8,7 @@ public class Employee {
 @Id
 	private int aid;
 	private String aname;
+	
 	public int getAid() {
 		return aid;
 	}

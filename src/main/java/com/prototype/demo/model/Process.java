@@ -8,6 +8,7 @@ public class Process {
     @Id
     private int procID;
     private String procName;
+    
     public int getProcID() {
         return procID;
     }
