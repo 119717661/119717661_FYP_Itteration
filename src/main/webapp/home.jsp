@@ -1,3 +1,13 @@
+<%--
+Source:
+/*W3school resources:
+(no date) Bootstrap 3 tutorial. Available at: https://www.w3schools.com/bootstrap/ (Accessed: November 10, 2022). 
+Bootstrap resources:
+Official CDN of bootstrap and font awesome (no date) Official CDN of Bootstrap and Font Awesome ·. Available at: https://www.bootstrapcdn.com/ (Accessed: November 10, 2022).
+Ajax – jQuery Open-Source library:
+Hosted libraries  |  google developers (no date) Google. Google. Available at: https://developers.google.com/speed/libraries/ (Accessed: November 10, 2022). 
+
+  --%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 
@@ -71,12 +81,15 @@
       <p><a href="#">Schedule Employee</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Super Lean App</h1><br>
+      <h1>Welcome  to the Lean App</h1><br>
       <p> Please Add New Employee to the Database </p><br>
+    
       
       <form action="addEmployee">
-            <div class="d-flex justify-content-between"><b>Employee ID: <b><input type="text" name="aid"></div><br><br>
-            <div class="d-flex justify-content-between"><b>Employee Name:  </b><input type="text" name="aname"></div><br>
+            <div class="d-flex justify-content-between"><b>Employee ID: <b><input type="text" name="eID"></div><br>
+            <div class="d-flex justify-content-between"><b>Employee First Name:  </b><input type="text" name="efName"></div><br>
+            <div class="d-flex justify-content-between"><b>Employee Last Name:  </b><input type="text" name="elName"></div><br>
+            <div class="d-flex justify-content-between"><b>Employee Type:  </b><input type="text" name="eType"></div><br>
             <input type="submit"><br>
         </form>
         
@@ -123,7 +136,7 @@
 </footer>
 <footer class="py-4 bg-light">
     <div class="container">
-        <p class="m-0 text-center text-black">All rigts reserved to University College Cork &copy; <br> Created by: Piotr Janus</p>
+        <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
     </div>
 </footer>
 
