@@ -67,8 +67,8 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a href="/employee">Schedule & Boards</a>
-  <a href="/process">Processes</a>
+  <a href="/">Schedule & Boards</a>
+  <a class="active" href="/process">Processes</a>
   <a href="#">Gemba</a>
   <a href="#">Dashboard</a>
 </div> 
@@ -77,12 +77,22 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <p><a href="#">Check Schedule</a></p>
-      <p><a href="#">Schedule Employee</a></p>
+      <p><a href="/process">Add Process</a></p>
+      <p><a href="/task">Add Task</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome  to the Lean App</h1><br>
+      <p> Please Add New Process</p><br>
+    
       
+         <form action="addProcess">
+            <div class="d-flex justify-content-between"><b>Process ID: <b><input type="text" name="procID"></div><br>
+            <div class="d-flex justify-content-between"><b>Process Name First Name:  </b><input type="text" name="procName"></div><br>
+            <input type="submit"><br>
+        </form>
+        
+<br>
+
         
 <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

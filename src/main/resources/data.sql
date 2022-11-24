@@ -1,6 +1,9 @@
 insert into employee values (101,'Manager', 'Piotr','Janus' );
-insert into employee values (102,'Project Leader', 'Randy' ,'Randsom');
-insert into employee values (103,'Support', 'Borris' ,'Johnson');
+insert into employee values (102,'Manager', 'Andrew','Golota' );
+insert into employee values (201,'Project Leader', 'Randy' ,'Randsom');
+insert into employee values (202,'Project Leader', 'Ivanka' ,'Trump');
+insert into employee values (301,'Support', 'Borris' ,'Johnson');
+insert into employee values (302,'Support', 'Angela' ,'Merkel');
 INSERT INTO PROCESS ( PROCID , PROC_NAME ) VALUES (101, 'Product Complaint');
 INSERT INTO PROCESS ( PROCID , PROC_NAME ) VALUES (102, 'Adverse Event');
 INSERT INTO TASK( TASKID, TASK_NAME , PROC_ID ) VALUES (101, 'Document Searching', 101);

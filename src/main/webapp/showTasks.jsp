@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+
 <%--
 Source:
 /*W3school resources:
@@ -8,8 +11,7 @@ Ajax – jQuery Open-Source library:
 Hosted libraries  |  google developers (no date) Google. Google. Available at: https://developers.google.com/speed/libraries/ (Accessed: November 10, 2022). 
 
   --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,7 +69,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a href="/employee">Schedule & Boards</a>
+  <a class="active" href="/">Schedule & Boards</a>
   <a href="/process">Processes</a>
   <a href="#">Gemba</a>
   <a href="#">Dashboard</a>
@@ -82,7 +84,17 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome  to the Lean App</h1><br>
+      <p> Employee Details </p><br>
+    
       
+<p> <b>Employee Details </b>:</p>
+<c:forEach items="${task}">
+<p> Task ID: ${task.taskID}</p>
+<p> Task Name: ${task.taskName}</p>
+</c:forEach>
+
+<br>
+    
         
 <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

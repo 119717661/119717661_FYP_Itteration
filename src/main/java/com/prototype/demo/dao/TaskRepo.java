@@ -7,3 +7,4 @@ import com.prototype.demo.model.Task;
 public interface TaskRepo extends CrudRepository<Task,Integer> {
     
 }
+

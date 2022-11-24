@@ -1,6 +1,6 @@
 package com.prototype.demo.model;
 
-import java.util.List;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -19,10 +19,10 @@ public class Task {
     @Id
     @Column(name="taskID", nullable=false, unique=true)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long taskid;
 
     @Column(name="taskName", nullable=false)
-    private String name;
+    private String taskname;
     
 
     @ManyToOne
@@ -31,24 +31,6 @@ public class Task {
     
     @OneToOne(mappedBy = "task")
     private Timer timer;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
 
     public Timer getTimer() {
         return timer;
@@ -66,10 +48,30 @@ public class Task {
         this.process = process;
     }
 
+    public Long getTaskid() {
+        return taskid;
+    }
+
+    public void setTaskid(Long taskid) {
+        this.taskid = taskid;
+    }
+
+    public String getTaskname() {
+        return taskname;
+    }
+
+    public void setTaskname(String taskname) {
+        this.taskname = taskname;
+    }
+
     @Override
     public String toString() {
-        return "Task [id=" + id + ", name=" + name + ", process=" + process + ", timer=" + timer + "]";
+        return "Task [taskid=" + taskid + ", taskname=" + taskname + ", process=" + process + ", timer=" + timer + "]";
     }
+
+
+
+
 
 
 
