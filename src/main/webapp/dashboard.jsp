@@ -67,10 +67,10 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a class="active" href="/">Schedule & Boards</a>
+  <a href="/employee">Schedule & Boards</a>
   <a href="/process">Processes</a>
   <a href="/gemba">Gemba</a>
-  <a href="/dashboard">Dashboard</a>
+  <a class="active" href="/dashboard">Dashboard</a>
 </div> 
 
   
@@ -82,22 +82,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
     </div>
     <div class="col-sm-8 text-left"> 
       <h1>Welcome  to the Lean App</h1><br>
-      <p> Please Add New Employee to the Database </p><br>
-    
       
-      <form action="addEmployee">
-            <div class="d-flex justify-content-between"><b>Employee ID: <b><input type="text" name="eID"></div><br>
-            <div class="d-flex justify-content-between"><b>Employee First Name:  </b><input type="text" name="efName"></div><br>
-            <div class="d-flex justify-content-between"><b>Employee Last Name:  </b><input type="text" name="elName"></div><br>
-            <div class="d-flex justify-content-between"><b>Employee Type:  </b><input type="text" name="eType"></div><br>
-            <input type="submit"><br>
-        </form>
-        
-<br>
-<form action="getEmployee">
-<input type="text" name="eID"><br>
-<input type="submit"><br>
-</form>
         
 <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>

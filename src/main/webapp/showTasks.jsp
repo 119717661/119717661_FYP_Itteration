@@ -88,10 +88,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
     
       
 <p> <b>Employee Details </b>:</p>
-<c:forEach items="${task}">
-<p> Task ID: ${task.taskID}</p>
-<p> Task Name: ${task.taskName}</p>
-</c:forEach>
+
 
 <br>
     

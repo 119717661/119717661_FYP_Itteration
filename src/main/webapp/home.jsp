@@ -69,8 +69,8 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <a href="/employee">Schedule & Boards</a>
   <a href="/process">Processes</a>
-  <a href="#">Gemba</a>
-  <a href="#">Dashboard</a>
+  <a href="/gemba">Gemba</a>
+  <a href="/dashboard">Dashboard</a>
 </div> 
 
   
@@ -81,7 +81,8 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
       <p><a href="#">Schedule Employee</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Lean App</h1><br>
+      <h1>Welcome to the Home of Lean App</h1><br>
+      <p> In this application </p>
       
         
 <br>
