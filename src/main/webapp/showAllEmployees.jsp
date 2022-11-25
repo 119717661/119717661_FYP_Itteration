@@ -69,10 +69,10 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a href="/employee">Schedule & Boards</a>
-  <a class="active" href="/process">Processes</a>
-  <a href="/gemba">Gemba</a>
-  <a href="/dashboard">Dashboard</a>
+  <a class="active" href="/">Schedule & Boards</a>
+  <a href="/process">Processes</a>
+  <a href="#">Gemba</a>
+  <a href="#">Dashboard</a>
 </div> 
 
   
@@ -86,10 +86,30 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
       <h1>Welcome  to the Lean App</h1><br>
       <p> Employee Details </p><br>
     
-      
-<p> <b>Employee Details </b>:</p>
+      		<div class="table-responsive">
+					<table class="table table-striped table-bordered">
+						<thead>
+							<tr>
+								<th>EmployeeId</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Employee Type</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:forEach var="employees" items="${employees}">
+								<tr>
+									<td>${employees.eID}</td>
+									<td>${employees.efName}</td>
+									<td>${employees.elName}</td>
+									<td>${employees.eType} </td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				</div>
 
-
+        
 <br>
     
         

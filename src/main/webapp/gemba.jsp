@@ -62,6 +62,28 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
   color: #ffffff;
 }
 
+.laps{
+  list-style: none;
+  overflow:auto;
+  position: relative;
+  width: 250px;
+  padding: 30px 0;
+ 
+}
+.time_stamp{
+ display: inline-block;
+}
+.lap-item{
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #444;
+  border-radius:05px;
+  margin-bottom:30px;
+}
+.display-none{
+  display: none;
+}
+
     </style>
 </head>
 <body>
@@ -73,15 +95,55 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
   <a href="/dashboard">Dashboard</a>
 </div> 
   
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Check Schedule</a></p>
-      <p><a href="#">Schedule Employee</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Lean App</h1><br>
+<center><h1> Gemba Calculations </h1></center>
+
+
       
+<div class="row">
+  <div class="col-md-3"> </div>
+
+  <div class="col-md-6">      
+        <center>
+            <div id="stopwatch">
+                <div class="time"><b>
+                     <span id="minute">00</span>:
+                      <span id="second">00</span>:
+                      <span id="ms">00</span>
+                      </b>
+                </div>
+               <br />
+                <button id="start" onclick="start();">Start</button>
+                <button id="stop" onclick="stop();">Stop</button>
+                <button id="save" onclick="save();">Save Time</button> 
+            </div>
+        </center>
+  </div>
+
+  <div class="col-md-3">
+  <ul class="laps">
+      <li class="lap-item">
+        <span class="task_number"> <b>Task Number 1 </b></span><br>
+        <span class="time_stamp"> 00 : 00 : 00 </span>
+      </li>
+        <li class="lap-item">
+        <span class="task_number"> <b>Task Number 2 </b></span><br>
+        <span class="time_stamp"> 00 : 00 : 00 </span>
+      </li>
+        <li class="lap-item">
+        <span class="task_number"> <b>Task Number 3 </b></span><br>
+        <span class="time_stamp"> 00 : 00 : 00 </span>
+      </li>
+         </li>
+        <li class="lap-item">
+        <span class="task_number"> <b>Task Number 4 </b></span><br>
+        <span class="time_stamp"> 00 : 00 : 00 </span>
+      </li>
+  </ul>
+  </div>
+</div>
+
+
+
         
 <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -129,6 +191,37 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
         <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
     </div>
 </footer>
+
+<script type="text/javascript">
+var timer = 0;
+var timerInterval;
+var ms = document.getElementById('ms');
+var second = document.getElementById('second');
+var minute = document.getElementById('minute');
+
+
+function start() {
+  stop();
+  timerInterval = setInterval(function() {
+    timer += 1/60;
+    msVal = Math.floor((timer - Math.floor(timer))*100);
+    secondVal = Math.floor(timer) - Math.floor(timer/60) * 60;
+    minuteVal = Math.floor(timer/60);
+    ms.innerHTML = msVal < 10 ? "0" + msVal.toString() : msVal;
+    second.innerHTML = secondVal < 10 ? "0" + secondVal.toString() : secondVal;
+    minute.innerHTML = minuteVal < 10 ? "0" + minuteVal.toString() : minuteVal;
+  }, 1000/60);
+}
+
+function stop() {
+  clearInterval(timerInterval);
+}
+
+const lapButton = document.getElementsByClassName("lap")[0];
+const toggleButton = () => {
+  lapButton.classList.remove("display-none")
+}
+</script>
 
 </body>
 </html>

@@ -69,10 +69,10 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a class="active" href="/">Schedule & Boards</a>
+  <a class="active" href="/employee">Schedule & Boards</a>
   <a href="/process">Processes</a>
-  <a href="#">Gemba</a>
-  <a href="#">Dashboard</a>
+  <a href="/gemba">Gemba</a>
+  <a href="/dashboard">Dashboard</a>
 </div> 
 
   

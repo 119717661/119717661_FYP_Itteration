@@ -1,10 +1,15 @@
 package com.prototype.demo.model;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "Employee")
 public class Employee {
 @Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
 private int eID;
 private String efName;
 private String elName;
@@ -36,6 +41,8 @@ public void seteType(String eType) {
 @Override
 public String toString() {
 	return "Employee [eID=" + eID + ", efName=" + efName + ", elName=" + elName + ", eType=" + eType + "]";
+}
+public Employee() {
 }
 
 }

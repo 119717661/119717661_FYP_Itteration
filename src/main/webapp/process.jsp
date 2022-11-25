@@ -80,9 +80,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
       <p><a href="/process">Add Process</a></p>
       <p><a href="/task">Add Task</a></p>
     </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Lean App</h1><br>
-      <p> Please Add New Process</p><br>
+<center><h1> Processes Page </h1></center>
     
       
          <form action="addProcess">

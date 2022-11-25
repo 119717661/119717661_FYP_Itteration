@@ -1,11 +1,12 @@
 package com.prototype.demo.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.servlet.ModelAndView;
 
 import com.prototype.demo.dao.EmployeeRepo;
@@ -16,8 +17,11 @@ public class EmployeeController
 
 {
 	@Autowired
-	EmployeeRepo repo;
-
+	private EmployeeRepo repo;
+	@Autowired
+	public void setRepo(EmployeeRepo repo) {
+		this.repo = repo;
+	}
 	@RequestMapping("/employee")
 	public String employee()
 	{
@@ -42,5 +46,24 @@ public class EmployeeController
 
 		
 	}
+	
+
+	@RequestMapping("/showAllEmployees")
+	public ModelAndView showAllEmployees()
+	{
+		ModelAndView mv = new ModelAndView("showAllEmployees.jsp");
+		
+		List<Employee> employees = new ArrayList<>();
+        
+       	
+
+		mv.addObject(employees);
+		return mv;
+
+		
+	}
+
+
+
 }
 

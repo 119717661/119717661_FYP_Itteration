@@ -74,23 +74,18 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 </div> 
 
   
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Check Schedule</a></p>
-      <p><a href="#">Schedule Employee</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Lean App</h1><br>
-      
-        
-<br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
+<center><h1> Dashboard </h1></center>
+<div class="container">
+  <div class="row ">
 
+    <div class="col-12">
+<iframe title="graph" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=14c3dafc-c2e4-41a1-afaa-68523c840a5e&autoAuth=true&ctid=46fe5ca5-866f-4e42-92e9-ed8786245545" frameborder="0" allowFullScreen="true"></iframe>
     </div>
+
   </div>
 </div>
+  
+
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">
     <div class="container px-4 px-lg-5 mt-5 bg-dark">

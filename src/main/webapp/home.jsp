@@ -74,17 +74,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 </div> 
 
   
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="#">Check Schedule</a></p>
-      <p><a href="#">Schedule Employee</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome to the Home of Lean App</h1><br>
-      <p> In this application </p>
-      
-        
+<center><h1> HomePage </h1></center>
 <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <hr>

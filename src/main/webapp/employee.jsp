@@ -67,7 +67,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a class="active" href="/">Schedule & Boards</a>
+  <a class="active" href="/employee">Schedule & Boards</a>
   <a href="/process">Processes</a>
   <a href="/gemba">Gemba</a>
   <a href="/dashboard">Dashboard</a>
@@ -81,7 +81,7 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
       <p><a href="#">Schedule Employee</a></p>
     </div>
     <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Lean App</h1><br>
+     <center><h1> Employee Page </h1></center>
       <p> Please Add New Employee to the Database </p><br>
     
       
@@ -94,11 +94,13 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
         </form>
         
 <br>
+<p> Find Employee per Employee ID... Employee ID starts with 101++</p>
 <form action="getEmployee">
 <input type="text" name="eID"><br>
 <input type="submit"><br>
 </form>
         
+          <a href="/showAllEmployees"><b> Show All Employees </b> </a>
 <br>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
       <hr>
