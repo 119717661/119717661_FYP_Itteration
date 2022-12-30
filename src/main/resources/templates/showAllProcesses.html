@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -63,25 +63,27 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
-    <div class="col-sm-2 sidenav">
-      <p><a href="/process">Add Process</a></p>
-      <p><a href="/task">Add Task</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
-      <h1>Welcome  to the Lean App</h1><br>
-      <p> Please Add New Task</p><br>
-    
+    <div class="col-sm-2 sidenav bg-gray-300">
+        <div class="list-group mt-2">
+          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllProcesses">Show All Processes</a>
+          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addNewProcess">Add New Process</a>
+          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllTasks">Show All Tasks</a>
+          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addNewTask">Add New Tasks</a>
+        </div>
+      </div>
       
-         <form action="addTask">
-            <div class="d-flex justify-content-between"><b>task ID:  </b><input type="text" name="taskid"></div><br>
-            <div class="d-flex justify-content-between"><b>Task Name: <b><input type="text" name="taskName"></div><br>
-   
-
-            <input type="submit"><br>
-        </form>
-
-        
-  
+<center><h2>All Current Processes</h2>
+  <table class="table table-striped">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    <tr th:each="process : ${processes}" class="mb-2">
+        <td th:text="${process.procID}"></td>
+        <td th:text="${process.procName}"></td>
+    </tr>
+</table>
+</center>        
 <br>
 
         

@@ -17,4 +17,8 @@ public class ProcessService {
     public List<Process> getAllProcesses() {
         return processRepository.findAll();
     }
+
+    public void addProcess(Process process) {
+        processRepository.save(process);
+    }
 }
