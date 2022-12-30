@@ -57,8 +57,5 @@ public class Process {
         return "Process [procID=" + procID + ", procName=" + procName + ", tasks=" + tasks + "]";
     }
 
-
-
- 
-    
+   
 }

@@ -5,12 +5,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class GembaController {
+public class ScheduleController {
+    
 
-  @RequestMapping("/gemba")
-  public String home(Model model) {
-    model.addAttribute("gemba");
-    return "gemba";
-  }
+    @RequestMapping("/schedule")
+	public String home(Model model) {
+	  model.addAttribute("schedule");
+	  return "schedule";
+	}
 
 }

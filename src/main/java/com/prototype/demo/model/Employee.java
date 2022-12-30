@@ -10,11 +10,11 @@ import javax.persistence.Table;
 public class Employee {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-private int eID;
+private long eID;
 private String efName;
 private String elName;
 private String eType;
-public int geteID() {
+public long geteID() {
 	return eID;
 }
 public void seteID(int eID) {

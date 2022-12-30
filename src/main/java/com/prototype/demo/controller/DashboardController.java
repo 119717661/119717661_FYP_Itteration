@@ -2,6 +2,7 @@ package com.prototype.demo.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 
@@ -11,9 +12,9 @@ public class DashboardController
 {
 
 	@RequestMapping("/dashboard")
-	public String home()
-	{
-		return "dashboard.jsp";
+	public String home(Model model) {
+	  model.addAttribute("dashboard");
+	  return "dashboard";
 	}
 
 }

@@ -1,19 +1,8 @@
-<%--
-Source:
-/*W3school resources:
-(no date) Bootstrap 3 tutorial. Available at: https://www.w3schools.com/bootstrap/ (Accessed: November 10, 2022). 
-Bootstrap resources:
-Official CDN of bootstrap and font awesome (no date) Official CDN of Bootstrap and Font Awesome ·. Available at: https://www.bootstrapcdn.com/ (Accessed: November 10, 2022).
-Ajax – jQuery Open-Source library:
-Hosted libraries  |  google developers (no date) Google. Google. Available at: https://developers.google.com/speed/libraries/ (Accessed: November 10, 2022). 
-
-  --%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -97,6 +86,10 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
   
 <center><h1> Gemba Calculations </h1></center>
 
+<select>
+    <option th:each="process : ${processes}" th:value="${process.procID}" th:text="${process.procName}"></option>
+</select>
+
 
       
 <div class="row">
@@ -115,34 +108,26 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
                 <button id="start" onclick="start();">Start</button>
                 <button id="stop" onclick="stop();">Stop</button>
                 <button id="save" onclick="save();">Save Time</button> 
+                <button id="restart" onclick="restart()">Restart</button>
             </div>
         </center>
   </div>
 
-  <div class="col-md-3">
-  <ul class="laps">
-      <li class="lap-item">
-        <span class="task_number"> <b>Task Number 1 </b></span><br>
-        <span class="time_stamp"> 00 : 00 : 00 </span>
-      </li>
-        <li class="lap-item">
-        <span class="task_number"> <b>Task Number 2 </b></span><br>
-        <span class="time_stamp"> 00 : 00 : 00 </span>
-      </li>
-        <li class="lap-item">
-        <span class="task_number"> <b>Task Number 3 </b></span><br>
-        <span class="time_stamp"> 00 : 00 : 00 </span>
-      </li>
-         </li>
-        <li class="lap-item">
-        <span class="task_number"> <b>Task Number 4 </b></span><br>
-        <span class="time_stamp"> 00 : 00 : 00 </span>
-      </li>
-  </ul>
-  </div>
+ 
 </div>
 
-
+<center>
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Task Number</th>
+      <th>Time</th>
+    </tr>
+  </thead>
+  <tbody id="laps">
+  </tbody>
+</table>
+</center>
 
         
 <br>
@@ -195,13 +180,19 @@ Hosted libraries  |  google developers (no date) Google. Google. Available at: h
 <script type="text/javascript">
 var timer = 0;
 var timerInterval;
+  var lapNum = 1;
 var ms = document.getElementById('ms');
 var second = document.getElementById('second');
 var minute = document.getElementById('minute');
 
 
 function start() {
-  stop();
+  // reset the timer to 0
+  document.getElementById("minute").innerHTML = "00";
+  document.getElementById("second").innerHTML = "00";
+  document.getElementById("ms").innerHTML = "00";
+  timer = 0;
+  
   timerInterval = setInterval(function() {
     timer += 1/60;
     msVal = Math.floor((timer - Math.floor(timer))*100);
@@ -221,6 +212,50 @@ const lapButton = document.getElementsByClassName("lap")[0];
 const toggleButton = () => {
   lapButton.classList.remove("display-none")
 }
+
+  // reset the timer to 0
+function restart() {
+  // stop the timer
+  stop();
+  
+  // reset the timer to 0
+  document.getElementById("minute").innerHTML = "00";
+  document.getElementById("second").innerHTML = "00";
+  document.getElementById("ms").innerHTML = "00";
+}
+
+ function save() {
+    // get the current lap time
+    var lapTime = document.getElementById("minute").innerHTML + ":" +
+                  document.getElementById("second").innerHTML + ":" +
+                  document.getElementById("ms").innerHTML;
+    
+    // create a new table row
+    var row = document.createElement("tr");
+    
+    // create a new table cell to display the lap number
+    var lapNumCell = document.createElement("td");
+    lapNumCell.innerHTML = "Task number " + lapNum;
+    row.appendChild(lapNumCell);
+    
+    // create a new table cell to display the lap time
+    var lapTimeCell = document.createElement("td");
+    lapTimeCell.innerHTML = lapTime;
+    row.appendChild(lapTimeCell);
+    
+    // add the new row to the table
+    var lapsTable = document.getElementById("laps");
+    lapsTable.appendChild(row);
+    
+    // increment the lap number
+    lapNum++;
+
+    restart();
+    start();
+  }
+  // rest of the stopwatch code
+  // ...
+
 </script>
 
 </body>
