@@ -1,5 +1,3 @@
-// TaskService class
-
 package com.prototype.demo.service;
 
 import java.util.List;
@@ -13,13 +11,19 @@ import com.prototype.demo.model.Task;
 @Service
 public class TaskService {
 
+@Autowired
+private TaskRepo taskRepository;
 
-    @Autowired
-    private TaskRepo taskRepository;
+public List<Task> getAllTasks() {
+return taskRepository.findAll();
+}
 
-    public List<Task> getAllTasks() {
-        return taskRepository.findAll();
-    }
+public List<Task> getTasksForProcess(Long procID) {
+return taskRepository.findByProcessProcID(procID);
+}
 
 
+public Task save(Task task) {
+    return taskRepository.save(task);
+  }
 }

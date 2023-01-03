@@ -9,14 +9,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.prototype.demo.model.Process;
+import com.prototype.demo.model.Task;
 import com.prototype.demo.service.ProcessService;
+import com.prototype.demo.service.TaskService;
 
 @Controller
 public class ProcessController {
 
     @Autowired
     private ProcessService processService;
+    
+
+    @Autowired
+    private TaskService taskService;
 
     @RequestMapping("/process")
     public String home(Model model) {
@@ -32,13 +40,6 @@ public class ProcessController {
     }
     
 
-    @GetMapping("/gemba")
-    public String getGembaPage(Model model) {
-        List<Process> processes = processService.getAllProcesses();
-        model.addAttribute("processes", processes);
-        return "gemba";
-    }
-
     @GetMapping("/addProcess")
     public String addProcessForm(Model model) {
         model.addAttribute("process", new Process());
@@ -50,5 +51,6 @@ public class ProcessController {
       processService.save(process);
       return "redirect:/showAllProcesses";
     }
+
     
 }
