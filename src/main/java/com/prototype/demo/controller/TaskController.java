@@ -7,15 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import com.prototype.demo.dao.TaskRepo;
 import com.prototype.demo.model.Task;
-
+import com.prototype.demo.service.TaskService;
 @Controller
 public class TaskController {
         
+
     @Autowired
-	TaskRepo repo;
+    TaskService taskService;
+
 
 	@RequestMapping("/task")
     public String home(Model model) {
@@ -25,7 +25,7 @@ public class TaskController {
 
     @GetMapping("/showAllTasks")
     public String getAllTasks(Model model) {
-        List<Task> tasks = repo.findAll();
+        List<Task> tasks = taskService.getAllTasks();
         model.addAttribute("tasks", tasks);
         return "showAllTasks";
     }

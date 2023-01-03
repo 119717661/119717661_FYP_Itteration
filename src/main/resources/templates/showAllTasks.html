@@ -55,7 +55,7 @@
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <a href="/employee">Schedule & Boards</a>
-  <a class="active" href="/process">Processes</a>
+  <a class="active" href="/process">Processes & Tasks</a>
   <a href="/gemba">Gemba</a>
   <a href="/dashboard">Dashboard</a>
 </div> 
@@ -66,27 +66,23 @@
     <div class="col-sm-2 sidenav bg-gray-300">
         <div class="list-group mt-2">
           <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllProcesses">Show All Processes</a>
-          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addNewProcess">Add New Process</a>
-          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllTasks">Show All Tasks</a>
-          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addNewTask">Add New Tasks</a>
+          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addProcess">Add New Process</a>
+          <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllTasks">Show All Tasks</a>
+          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addTask">Add New Tasks</a>
         </div>
       </div>
       
-<center><h2>All Current Processes</h2>
+<center><h2>All Tasks</h2>
   <table class="table table-striped">
     <tr>
-        <th>Task ID</th>
-        <th>Task Name</th>
-        <th>Process ID</th>  
-
-
-
+      <th>Task ID</th>
+      <th>Task Name</th>
+      <th>Process Name</th>
     </tr>
-    <tr th:each="task : ${Tasks}" class="mb-2">
-        <td th:text="${task.taskID}"></td>
-        <td th:text="${task.taskname}"></td>
-        <td th:text="${task.procID}"></td>
-
+    <tr th:each="task : ${tasks}">
+      <td th:text="${task.taskid}"></td>
+      <td th:text="${task.taskname}"></td>
+      <td th:text="${task.process.procName}"></td>
     </tr>
 </table>
 </center>        

@@ -14,11 +14,20 @@ public class ProcessService {
     @Autowired
     private ProcessRepo processRepository;
 
+    public ProcessRepo getProcessRepository() {
+        return processRepository;
+    }
+
+    public void setProcessRepository(ProcessRepo processRepository) {
+        this.processRepository = processRepository;
+    }
+
     public List<Process> getAllProcesses() {
         return processRepository.findAll();
     }
 
-    public void addProcess(Process process) {
-        processRepository.save(process);
-    }
+    
+    public Process save(Process process) {
+        return processRepository.save(process);
+      }
 }
