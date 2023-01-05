@@ -18,10 +18,6 @@ public List<Task> getAllTasks() {
 return taskRepository.findAll();
 }
 
-public List<Task> getTasksForProcess(Long procID) {
-return taskRepository.findByProcessProcID(procID);
-}
-
 
 public Task save(Task task) {
     return taskRepository.save(task);

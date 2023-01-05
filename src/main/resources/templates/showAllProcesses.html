@@ -51,49 +51,45 @@
 
     </style>
 </head>
-<body>
- <!-- The navigation menu -->
- <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a href="/employee">Schedule & Boards</a>
-  <a class="active" href="/process">Processes & Tasks</a>
-  <a href="/gemba">Gemba</a>
-  <a href="/dashboard">Dashboard</a>
-</div> 
-
+<body><!-- The navigation menu -->
+  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <a href="/employee">Schedule & Boards</a>
+    <a class="active" href="/process">Processes & Tasks</a>
+    <a href="/gemba">Gemba</a>
+    <a href="/dashboard">Dashboard</a>
+  </div> 
   
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav bg-gray-300">
-        <div class="list-group mt-2">
-          <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllProcesses">Show All Processes</a>
-          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addProcess">Add New Process</a>
-          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllTasks">Show All Tasks</a>
-          <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addTask">Add New Tasks</a>
+  <div class="container-fluid text-center">    
+    <div class="row content">
+      <div class="col-sm-2 sidenav bg-gray-300">
+          <div class="list-group mt-2">
+            <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllProcesses">Show All Processes</a>
+            <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addProcess">Add New Process</a>
+            <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllTasks">Show All Tasks</a>
+            <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addTask">Add New Tasks</a>
+          </div>
         </div>
+        <center>
+      <div class="col-sm-8">
+        <h2>All Current Processes</h2>
+          <table class="table table-striped">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            <tr th:each="process : ${processes}" class="mb-2">
+                <td th:text="${process.procID}"></td>
+                <td th:text="${process.procName}"></td>
+            </tr>
+          </table>
+          </div>
+        </center>
       </div>
-      
-<center><h2>All Current Processes</h2>
-  <table class="table table-striped">
-    <tr>
-        <th>ID</th>
-        <th>Name</th>
-    </tr>
-    <tr th:each="process : ${processes}" class="mb-2">
-        <td th:text="${process.procID}"></td>
-        <td th:text="${process.procName}"></td>
-    </tr>
-</table>
-</center>        
-<br>
-
-        
-<br>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <hr>
-
+      <div class="col-sm-2 sidenav"></div>
     </div>
   </div>
-</div>
+  <br>
+  
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">
     <div class="container px-4 px-lg-5 mt-5 bg-dark">
@@ -115,12 +111,6 @@
             <div class="col mb-5 float-right ms-auto">
                 <div class="card h-10 bg-dark text-white border-0">
                                    
-            
-       
-                   
-             
-
-
                 </div>
             </div>
     </div>

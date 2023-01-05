@@ -113,7 +113,7 @@
 <hr>
 
 <!-- Display a table of tasks -->
-<table class="table table-striped" style="display: none">
+<table id="taskTable" class="table table-striped" style="display: none">
   <tr>
     <th>Task ID</th>
     <th>Task Name</th>
@@ -124,7 +124,7 @@
     <td th:text="${task.taskid}"></td>
     <td th:text="${task.taskname}"></td>
     <td th:text="${task.process.procName}" class="process-name"></td>
-    <td>NA</td>
+    <td class="time-of-task">NA</td>
   </tr>
 </table>
 <script>

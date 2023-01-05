@@ -9,12 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.prototype.demo.model.Process;
-import com.prototype.demo.model.Task;
 import com.prototype.demo.service.ProcessService;
-import com.prototype.demo.service.TaskService;
+
 
 @Controller
 public class ProcessController {
@@ -23,8 +20,7 @@ public class ProcessController {
     private ProcessService processService;
     
 
-    @Autowired
-    private TaskService taskService;
+
 
     @RequestMapping("/process")
     public String home(Model model) {

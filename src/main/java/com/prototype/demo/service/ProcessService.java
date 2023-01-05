@@ -30,4 +30,9 @@ public class ProcessService {
     public Process save(Process process) {
         return processRepository.save(process);
       }
+
+      public Process getProcessById(Long procID) {
+        return processRepository.findById(procID).orElse(null);
+    }
+    
 }

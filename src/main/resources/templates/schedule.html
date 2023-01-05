@@ -51,6 +51,15 @@
   color: #ffffff;
 }
 
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .form {
+    margin: 20px;
+  }
+
     </style>
 </head>
 <body>
@@ -79,61 +88,72 @@
      <br>
  
 
-     <form action="" method="post">
-       <div class="form-group">
-         <label for="daySelect">Select Day:</label>
-         <select class="form-control" id="daySelect">
-           <option>Monday</option>
-           <option>Tuesday</option>
-           <option>Wednesday</option>
-           <option>Thursday</option>
-           <option>Friday</option>
-         </select>
-       </div>
-       <div class="form-group">
-         <label for="employeeSelect">Select Employee:</label>
-           <select class="form-control" id="employeeSelect"></selectclass>
-             <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-         </select>
- 
-           
-       </div>
-       <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
-     </form>
-     <table class="table">
-       <thead>
-         <tr>
-           <th scope="col">Day</th>
-           <th scope="col">Employee</th>
-         </tr>
-       </thead>
-       <tbody>
-         <tr>
-           <td><b>Monday</b></td>
-           <td>No one assigned</td>
-         </tr>
-         <tr>
-           <td><b>Tuesday</b></td>
-           <td>No one assigned</td>
-         </tr>
-         <tr>
-           <td><b>Wednesday</b></td>
-           <td>No one assigned</td>
-         </tr>
-         <tr>
-           <td><b>Thursday</b></td>
-           <td>No one assigned</td>
-         </tr>
-         <tr>
-           <td><b>Friday</b></td>
-           <td>No one assigned</td>
-         </tr>
-       </tbody>
-     </table>
-   </div>
-
+     <div class="form-container">
+      <form action="" method="post" class="form">
+        <div class="form-group">
+          <label for="daySelect">Select Day:</label>
+          <select class="form-control" id="daySelect">
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="employeeSelect">Select Employee:</label>
+          <select class="form-control" id="employeeSelect"></selectclass>
+            <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitButton">Assign Employee</button>
+      </form>
+      <form id="assignment-form" class="form">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Employee</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>Monday</b></td>
+              <td>
+                <input type="text" name="employee-monday" value="No one assigned" required>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Tuesday</b></td>
+              <td>
+                <input type="text" name="employee-tuesday" value="No one assigned" required>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Wednesday</b></td>
+              <td>
+                <input type="text" name="employee-wednesday" value="No one assigned" required>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Thursday</b></td>
+              <td>
+                <input type="text" name="employee-thursday" value="No one assigned" required>
+              </td>
+            </tr>
+            <tr>
+              <td><b>Friday</b></td>
+              <td>
+                <input type="text" name="employee-friday" value="No one assigned" required>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary">Submit Schedule</button>
+      </form>
     </div>
   </div>
+    
 </div>
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">

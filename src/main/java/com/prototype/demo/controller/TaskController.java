@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.prototype.demo.dao.ProcessRepo;
 import com.prototype.demo.model.Task;
 import com.prototype.demo.model.Process;
 import com.prototype.demo.service.ProcessService;
@@ -25,6 +24,8 @@ public class TaskController {
 
     @Autowired
     ProcessService processService;
+
+
 
 	@RequestMapping("/task")
     public String home(Model model) {
@@ -46,5 +47,12 @@ public class TaskController {
         return "addTask";
     }
 
+    @PostMapping("/addTask")
+public String addTask(@ModelAttribute Task task, @RequestParam("process-select") Long procID) {
+    Process process = processService.getProcessById(procID);
+    task.setProcess(process);
+    taskService.save(task);
+    return "redirect:/showAllTasks";
+}
 
 }

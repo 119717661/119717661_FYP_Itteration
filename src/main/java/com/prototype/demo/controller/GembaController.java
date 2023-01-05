@@ -36,9 +36,6 @@ model.addAttribute("tasks", taskService.getAllTasks());
 return "gemba";
 }
 
-@GetMapping("/tasks")
-public List<Task> getTasksForProcess(@RequestParam Long processId) {
-return taskService.getTasksForProcess(processId);
-}
+
 
 }
