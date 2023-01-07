@@ -5,54 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link th:href="@{/style/main.css}" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
   
 
   <title>Lean Web App</title>
-  <style>
-    * {box-sizing: border-box}
-    body {font-family: Arial, Helvetica, sans-serif;}
-    
-    .navbar {
-      width: 100%;
-      background-color: #555;
-      overflow: auto;
-    }
-    
-    .navbar a {
-      float: left;
-      padding: 12px;
-      color: white;
-      text-decoration: none;
-      font-size: 17px;
-      width: 25%; /* Four links of equal widths */
-      text-align: center;
-    }
-    
-    .navbar a:hover {
-      background-color: #000;
-    }
-    
-    .navbar a.active {
-      background-color: #04AA6D;
-    }
-    
-    @media screen and (max-width: 500px) {
-      .navbar a {
-        float: none;
-        display: block;
-        width: 100%;
-        text-align: left;
-      }
-    }
-    .bg-4 {
-  background-color: #2f2f2f;
-  color: #ffffff;
-}
 
-    </style>
 </head>
 <body>
  <!-- The navigation menu -->
@@ -68,7 +28,7 @@
     <div class="col-sm-2 sidenav bg-gray-300">
       <div class="list-group mt-2">
         <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addEmployee">Add New Employee</a>
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllEmployees">Show All Employees</a>
+        <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllEmployees">Show All Employees</a>
         <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/schedule">Schedule Operations</a>
       </div>
     </div>
@@ -104,44 +64,32 @@
   </div>
 </div>
 
+
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">
     <div class="container px-4 px-lg-5 mt-5 bg-dark">
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-lg-start">
-            <div class="col mb-5">
-                <div class="card bg-dark text-white border-0">
+      <div class="row gx-4 gx-lg-5 justify-content-lg-start">
+        <div class="col mb-5">
+            <div class="card bg-dark text-white border-0">
+                <div class="text-lg-start">
+                    <b>Contact Details:</b><br>
                     <div class="text-lg-start">
-                        <b>Contact Details</b>
-                        <hr>
-                    </div>
-                       
-                    <div class="text-lg-start">
-                   
-                        <p>Phone : 087xxxx60</p>
-                        <p>E-mail : 119717661@umail.ucc.ie</p>
-                    </div>
-            </div>
-        </div>
-            <div class="col mb-5 float-right ms-auto">
-                <div class="card h-10 bg-dark text-white border-0">
-                                   
-            
-       
-                   
-             
-
-
+                      <p>Phone : 087xxxx60</p>
+                      <p>E-mail : 119717661@umail.ucc.ie</p>
+                  </div>
                 </div>
+                <hr>
             </div>
+      </div>
+      <div class="col mb-5 float-right ms-auto">
+        <div class="card h-10 bg-dark text-white border-0"></div>
+      </div>
+      </div>
     </div>
-    </div>
-
-</section>
-</footer>
-<footer class="py-4 bg-light">
-    <div class="container">
-        <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
-    </div>
+  </section>
+  <div class="container py-4 bg-light">
+    <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
+  </div>
 </footer>
 
 </body>
