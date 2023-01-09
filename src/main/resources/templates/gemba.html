@@ -17,8 +17,8 @@
 <body>
  <!-- The navigation menu -->
  <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a href="/employee">Schedule & Boards</a>
-  <a href="/process">Processes</a>
+  <a href="/employee">Employees & Schedule</a>
+  <a href="/process">Processes & Tasks</a>
   <a class="active" href="/gemba">Gemba</a>
   <a href="/dashboard">Dashboard</a>
 </div> 
@@ -47,7 +47,7 @@
       <button id="start" class="btn btn-primary mr-3" onclick="start();">Start</button>
       <button id="stop" class="btn btn-secondary mr-3" onclick="stop();">Stop</button>
       <button id="save" class="btn btn-success mr-3" onclick="save();">Save Time</button>
-      <button id="restart" class="btn btn-danger" onclick="restart()">Restart</button>
+      <button id="restart" class="btn btn-danger" onclick="reset()">Reset</button>
     </div>
   </div>
 </div>
@@ -138,24 +138,29 @@
   let currentRow = 0; // variable to store the current row that the save function is saving to
 
   function start() {
-    // reset the timer to 0
-    document.getElementById("minute").innerHTML = "00";
-    document.getElementById("second").innerHTML = "00";
-    document.getElementById("ms").innerHTML = "00";
-    timer = 0;
+  // reset the timer to 0
+  document.getElementById("minute").innerHTML = "00";
+  document.getElementById("second").innerHTML = "00";
+  document.getElementById("ms").innerHTML = "00";
+  timer = 0;
 
-    timerInterval = setInterval(function() {
-      timer += 1/60;
-      msVal = Math.floor((timer - Math.floor(timer))*100);
-      secondVal = Math.floor(timer) - Math.floor(timer/60) * 60;
-      minuteVal = Math.floor(timer/60);
-      ms.innerHTML = msVal < 10 ? "0" + msVal.toString() : msVal;
-      second.innerHTML = secondVal < 10 ? "0" + secondVal.toString() : secondVal;
-      minute.innerHTML = minuteVal < 10 ? "0" + minuteVal.toString() : minuteVal;
-    }, 1000/60);
-  }
+  // clear the previous interval
+  clearInterval(timerInterval);
 
-  let isRunning = true;
+  // create a new interval
+  timerInterval = setInterval(function() {
+    timer += 1/60;
+    msVal = Math.floor((timer - Math.floor(timer))*100);
+    secondVal = Math.floor(timer) - Math.floor(timer/60) * 60;
+    minuteVal = Math.floor(timer/60);
+    ms.innerHTML = msVal < 10 ? "0" + msVal.toString() : msVal;
+    second.innerHTML = secondVal < 10 ? "0" + secondVal.toString() : secondVal;
+    minute.innerHTML = minuteVal < 10 ? "0" + minuteVal.toString() : minuteVal;
+  }, 1000/60);
+}
+
+let isRunning = true;
+let startTime;
 
 function stop() {
   if (isRunning) {
@@ -163,7 +168,16 @@ function stop() {
     isRunning = false;
     document.getElementById("stop").innerHTML = "Resume";
   } else {
-    start();
+    startTime = new Date();
+    timerInterval = setInterval(function() {
+      timer = ((new Date().getTime() - startTime.getTime()) / 1000);
+      msVal = Math.floor((timer - Math.floor(timer))*100);
+      secondVal = Math.floor(timer) - Math.floor(timer/60) * 60;
+      minuteVal = Math.floor(timer/60);
+      ms.innerHTML = msVal < 10 ? "0" + msVal.toString() : msVal;
+      second.innerHTML = secondVal < 10 ? "0" + secondVal.toString() : secondVal;
+      minute.innerHTML = minuteVal < 10 ? "0" + minuteVal.toString() : minuteVal;
+    }, 1000/60);
     isRunning = true;
     document.getElementById("stop").innerHTML = "Stop";
   }
@@ -171,15 +185,17 @@ function stop() {
 
 
 // reset the timer to 0
-function restart() {
+function reset() {
   // stop the timer
-
+  clearInterval(timerInterval);
 
   // reset the timer to 0
+  timer = 0;
   document.getElementById("minute").innerHTML = "00";
   document.getElementById("second").innerHTML = "00";
   document.getElementById("ms").innerHTML = "00";
 }
+
   function save() {
   // Get the selected process name
   const selectedProcess = select.options[select.selectedIndex].textContent;
