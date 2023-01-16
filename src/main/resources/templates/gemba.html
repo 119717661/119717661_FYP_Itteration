@@ -66,40 +66,11 @@
     <td th:text="${task.taskid}"></td>
     <td th:text="${task.taskname}"></td>
     <td th:text="${task.process.procName}" class="process-name"></td>
-    <!-- Add a new td element to display the time of task -->
+  
     <td class="time-of-task" id="time-of-task-{{task.taskid}}">NA</td>
   </tr>
   
 </table>
-<script>
-  // Selector 
-  const select = document.querySelector('#process-select');
-  const table = document.querySelector('.table');
-
-  // Add an event listener to the select element
-  select.addEventListener('change', () => {
-    // Show the table
-    table.style.display = '';
-
-    // Get the selected process name
-    const selectedProcess = select.options[select.selectedIndex].textContent;
-
-    // Loop through the rows of the table
-    for (const row of table.rows) {
-      // Get the process name cell of the current row
-      const processCell = row.querySelector('.process-name');
-      if (processCell) {
-        // If the process name of the current row matches the selected process name, show the row
-        if (processCell.textContent === selectedProcess) {
-          row.style.display = '';
-        } else {
-          // Otherwise, hide the row
-          row.style.display = 'none';
-        }
-      }
-    }
-  });
-</script>
 
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">
@@ -129,25 +100,51 @@
 </footer>
 
 <script type="text/javascript">
+
+  // Selector 
+  const select = document.querySelector('#process-select');
+  const table = document.querySelector('.table');
+
+
+  select.addEventListener('change', () => {
+   
+    table.style.display = '';
+
+    const selectedProcess = select.options[select.selectedIndex].textContent;
+    
+    for (const row of table.rows) {
+ 
+      const processCell = row.querySelector('.process-name');
+      if (processCell) {
+          if (processCell.textContent === selectedProcess) {
+          row.style.display = '';
+        } else {
+           row.style.display = 'none';
+        }
+      }
+    }
+  });
+
+//stopwatch
+
   var timer = 0;
   var timerInterval;
   var lapNum = 1;
   var ms = document.getElementById('ms');
   var second = document.getElementById('second');
   var minute = document.getElementById('minute');
-  let currentRow = 0; // variable to store the current row that the save function is saving to
+  let currentRow = 0; 
+  let isRunning = true;
+  let startTime;
 
   function start() {
-  // reset the timer to 0
   document.getElementById("minute").innerHTML = "00";
   document.getElementById("second").innerHTML = "00";
   document.getElementById("ms").innerHTML = "00";
   timer = 0;
 
-  // clear the previous interval
   clearInterval(timerInterval);
 
-  // create a new interval
   timerInterval = setInterval(function() {
     timer += 1/60;
     msVal = Math.floor((timer - Math.floor(timer))*100);
@@ -158,9 +155,6 @@
     minute.innerHTML = minuteVal < 10 ? "0" + minuteVal.toString() : minuteVal;
   }, 1000/60);
 }
-
-let isRunning = true;
-let startTime;
 
 function stop() {
   if (isRunning) {
@@ -183,61 +177,38 @@ function stop() {
   }
 }
 
-
-// reset the timer to 0
 function reset() {
-  // stop the timer
   clearInterval(timerInterval);
 
-  // reset the timer to 0
   timer = 0;
   document.getElementById("minute").innerHTML = "00";
   document.getElementById("second").innerHTML = "00";
   document.getElementById("ms").innerHTML = "00";
 }
 
-  function save() {
-  // Get the selected process name
+function save() {
   const selectedProcess = select.options[select.selectedIndex].textContent;
 
-  // Get a list of all the rows in the table
   const rows = table.rows;
 
-  // Find the index of the next row to update
   let nextRowIndex = currentRow;
   while (nextRowIndex < rows.length) {
-    // Get the process name cell of the current row
     const processCell = rows[nextRowIndex].querySelector('.process-name');
     if (processCell && processCell.textContent === selectedProcess) {
-      // If the process name of the current row matches the selected process name, save the time of the task
-      // Get the elapsed time of the stopwatch
       const elapsedTime = (parseInt(minute.textContent) * 60 + parseInt(second.textContent)) + (parseInt(ms.textContent) / 100);
-
-      // Get the "Time of Task" cell
       const timeCell = rows[nextRowIndex].querySelector('.time-of-task');
-      // Update the text of the cell with the elapsed time of the stopwatch
       timeCell.textContent = elapsedTime;
-
-      // Update the current row index and break out of the loop
       currentRow = nextRowIndex + 1;
       break;
     }
     nextRowIndex += 1;
   }
 
-  // If all rows have been updated, reset the current row index to 0
   if (nextRowIndex >= rows.length) {
     currentRow = 0;
   }
-
-  // Reset the stopwatch
   start();
 }
-
-
-
-
 </script>
-
 </body>
 </html>
