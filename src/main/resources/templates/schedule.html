@@ -6,7 +6,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link th:href="@{/style/main.css}" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
   
 
@@ -40,26 +43,7 @@
  
 
      <div class="form-container">
-      <form action="" method="post" class="form">
-        <div class="form-group">
-          <label for="daySelect">Select Day:</label>
-          <select class="form-control" id="daySelect">
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="employeeSelect">Select Employee:</label>
-          <select class="form-control" id="employeeSelect"></selectclass>
-            <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-          </select>
-        </div>
-        <button type="submit" class="btn btn-primary" id="submitButton">Assign Employee</button>
-      </form>
-      <form id="assignment-form" class="form">
+           <form id="assignment-form" class="form">
         <table class="table">
           <thead>
             <tr>
@@ -71,31 +55,41 @@
             <tr>
               <td><b>Monday</b></td>
               <td>
-                <input type="text" name="employee-monday" value="No one assigned" required>
+                <select class="form-control" id="employeeSelect"></selectclass>
+                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                </select>
               </td>
             </tr>
             <tr>
               <td><b>Tuesday</b></td>
               <td>
-                <input type="text" name="employee-tuesday" value="No one assigned" required>
+                <select class="form-control" id="employeeSelect"></selectclass>
+                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                </select>
               </td>
             </tr>
             <tr>
               <td><b>Wednesday</b></td>
               <td>
-                <input type="text" name="employee-wednesday" value="No one assigned" required>
+                <select class="form-control" id="employeeSelect"></selectclass>
+                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                </select>
               </td>
             </tr>
             <tr>
               <td><b>Thursday</b></td>
               <td>
-                <input type="text" name="employee-thursday" value="No one assigned" required>
+                <select class="form-control" id="employeeSelect"></selectclass>
+                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                </select>
               </td>
             </tr>
             <tr>
               <td><b>Friday</b></td>
               <td>
-                <input type="text" name="employee-friday" value="No one assigned" required>
+                <select class="form-control" id="employeeSelect"></selectclass>
+                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                </select>
               </td>
             </tr>
           </tbody>
@@ -134,24 +128,12 @@
   </div>
 </footer>
 
-
-
-<!-- Optional JavaScript -->
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
   <script>
-    // Add an event listener to the submit button
-    document.getElementById('submitButton').addEventListener('click', function(event) {
-      // Prevent the form from submitting
-      event.preventDefault();
 
-      // Get the selected day and employee from the dropdown menus
+    document.getElementById('submitButton').addEventListener('click', function(event) {
+      event.preventDefault();
       var day = document.getElementById('daySelect').value;
       var employee = document.getElementById('employeeSelect').value;
-
-      // Find the row in the table that corresponds to the selected day
       var rows = document.getElementsByTagName('tr');
       var rowToUpdate;
       for (var i = 0; i < rows.length; i++) {
@@ -160,8 +142,6 @@
           break;
         }
       }
-
-      // Update the employee in the selected row
       rowToUpdate.lastElementChild.textContent = employee;
     });
   </script>
