@@ -23,7 +23,6 @@ package com.prototype.demo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.prototype.demo.model.Employee;
@@ -40,12 +39,12 @@ public class BootjpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String...a) {
-	  for (int i = 0; i <= 10; i++) {
+	  
 		Employee employee = new Employee();
-		employee.setEfName("First Name");
-		employee.setElName("Last Name");
-		employee.seteType("Employee Type");
+		employee.setEfName("Luke");
+		employee.setElName("Field");
+		employee.seteType("Support");
 		employeeService.save(employee);
-	  }
+	  
 	}
 }

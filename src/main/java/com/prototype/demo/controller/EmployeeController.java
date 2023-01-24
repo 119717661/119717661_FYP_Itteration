@@ -66,7 +66,7 @@ private CsvFileGenerator csvGenerator;
   public void exportIntoCSV(HttpServletResponse response) throws IOException {
     response.setContentType("text/csv");
     response.addHeader("Content-Disposition", "attachment; filename=\"employee.csv\"");
-    csvGenerator.writeStudentsToCsv(employeeService.findAll(), response.getWriter());
+    csvGenerator.writeEmployeesToCsv(employeeService.findAll(), response.getWriter());
   }
 
 }
