@@ -27,18 +27,63 @@
       <div class="list-group mt-2">
         <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addEmployee">Add New Employee</a>
         <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllEmployees">Show All Employees</a>
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/schedule">Schedule Operations</a>
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/view-schedule">View Schedule</a>
+        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/schedule">Schedule Employees</a>
+        <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/view-schedule">View Schedule</a>
       </div>
     </div>
     
     <div class="col-sm-8 text-left"> 
-     <h2> Employee Page. </h2>
+     <h2> View Schedule Page. </h2>
         
-<br>
-    <p>
-      Select Task Related to Employees from the Side Navigation.
-    </p>
+<br><form id="week-form" class="form">
+  <div class="form-group">
+      <label for="weekNumber">Week Number</label>
+      <select id="weekSelector" name="weekNumber" class="form-control form-control-lg" >
+        <option value="" disabled selected>Please Select The Week</option>
+        <option th:each="week : ${weeks}" th:value="${week.weekNumber}" th:text="${week.weekNumber}" style="text-align: center;"></option>
+     </select>
+  </div>
+</form>
+<div class="table-responsive">
+  <table id="scheduleTable" class="table table-bordered" style="display: none;">
+      <thead class="thead-light">
+          <tr>
+              <th>Day</th>
+              <th>Employee</th>
+              <th>Week</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr th:each="schedule : ${scheduleList}" style="display: none;">
+              <td class="text-center" th:text="${schedule.day}"></td>
+              <td th:text="${schedule.employee.efName} + ' ' + ${schedule.employee.elName}"></td>
+              <td th:text="${schedule.week.weekNumber}" class="week-Name"></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+<script type="text/javascript">
+  // Selector 
+  const select = document.querySelector('#weekSelector');
+  const table = document.querySelector('#scheduleTable');
+
+  select.addEventListener('change', () => {
+    table.style.display = '';
+
+    const selectedWeek = select.options[select.selectedIndex].textContent;
+    
+    for (const row of table.rows) {
+      const weeksCell = row.querySelector('.week-Name');
+      if (weeksCell) {
+        if (weeksCell.textContent === selectedWeek) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      }
+    }
+  });
+</script>
 
 <hr>
     </div>

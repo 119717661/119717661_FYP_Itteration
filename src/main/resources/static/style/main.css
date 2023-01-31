@@ -91,6 +91,18 @@ text-transform: uppercase;
 letter-spacing: 1px;
 }
 
+#weekSelector{
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  }
+  
+  #weekSelector option {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  }
+
 .form-container {
     display: flex;
     justify-content: center;
@@ -100,4 +112,3 @@ letter-spacing: 1px;
     margin: 20px;
   }
 
-  

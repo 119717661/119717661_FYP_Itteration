@@ -17,7 +17,7 @@ private String eType;
 public long geteID() {
 	return eID;
 }
-public void seteID(int eID) {
+public void seteID(long eID) {
 	this.eID = eID;
 }
 public String getEfName() {

@@ -12,8 +12,13 @@ public class Schedule {
     @Column(name = "day")
     private String day;
 
-    @Column(name = "employee")
-    private String employee;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private Employee employee;
+
+    @ManyToOne
+    @JoinColumn(name = "week_id")
+    private Week week;
 
     public Long getId() {
         return id;
@@ -31,13 +36,19 @@ public class Schedule {
         this.day = day;
     }
 
-    public String getEmployee() {
+    public Employee getEmployee() {
         return employee;
     }
 
-    public void setEmployee(String employee) {
+    public void setEmployee(Employee employee) {
         this.employee = employee;
     }
 
-    // Getters and setters for the fields go here
+    public Week getWeek() {
+        return week;
+    }
+
+    public void setWeek(Week week) {
+        this.week = week;
+    }
 }

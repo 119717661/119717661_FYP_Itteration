@@ -7,7 +7,8 @@
   <link th:href="@{/style/main.css}" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>  
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.16.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
@@ -32,7 +33,8 @@
       <div class="list-group mt-2">
         <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addEmployee">Add New Employee</a>
         <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllEmployees">Show All Employees</a>
-        <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/schedule">Schedule Operations</a>
+        <a class="active list-group-item list-group-item-action text-dark font-weight-bold" href="/schedule">Schedule Employees</a>
+        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/view-schedule">View Schedule</a>
       </div>
     </div>
     
@@ -43,64 +45,132 @@
  
 
      <div class="form-container">
-           <form id="assignment-form" class="form">
+      <form id="assignment-form" class="form" th:action="@{/save-schedule}" th:object="${schedule}" method="post">
+        <div class="form-group">
+          <label for="weekNumber">Select Starting day of the Week:</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="weekNumber" name="weekNumber" required>
+                </div>
+        </div>
+        
+        <style>
+           .ui-datepicker {
+    width: 500px;
+    font-size: 15px;
+    background-color: rgb(235, 235, 235);
+    border: 1px solid #ddd;
+    text-align: center;
+  }
+  
+  .ui-datepicker-header {
+    text-align: center;
+  }
+  
+  .ui-datepicker-title {
+    text-align: center;
+  }
+  
+  .ui-datepicker-prev, .ui-datepicker-next {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+  }
+  
+  .ui-datepicker-prev span, .ui-datepicker-next span {
+    display: inline-block;
+    margin: 0 auto;
+  }
+  
+  .ui-datepicker-calendar th {
+    padding-right: 10px;
+    text-align: center;
+  }
+  
+  .ui-datepicker-calendar td {
+    padding-right: 10px;
+    text-align: center;
+  }
+
+  
+        </style>
+       
         <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Day</th>
-              <th scope="col">Employee</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><b>Monday</b></td>
-              <td>
-                <select class="form-control" id="employeeSelect"></selectclass>
-                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><b>Tuesday</b></td>
-              <td>
-                <select class="form-control" id="employeeSelect"></selectclass>
-                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><b>Wednesday</b></td>
-              <td>
-                <select class="form-control" id="employeeSelect"></selectclass>
-                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><b>Thursday</b></td>
-              <td>
-                <select class="form-control" id="employeeSelect"></selectclass>
-                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-                </select>
-              </td>
-            </tr>
-            <tr>
-              <td><b>Friday</b></td>
-              <td>
-                <select class="form-control" id="employeeSelect"></selectclass>
-                  <option th:each="employee : ${employees}" th:value="${employee.efName} + ' ' + ${employee.elName}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
-                </select>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="submit" class="btn btn-primary">Submit Schedule</button>
-      </form>
-    </div>
+            <thead>
+              <tr>
+                <th scope="col">Day</th>
+                <th scope="col">Employee</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Monday</b></td>
+                <td>
+                  <select name="MondayEmployee" class="form-control">
+                    <option th:each="employee : ${employees}" th:value="${employee.eID}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Tuesday</b></td>
+                <td>
+                  <select name="TuesdayEmployee" class="form-control">
+                    <option th:each="employee : ${employees}" th:value="${employee.eID}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Wednesday</b></td>
+                <td>
+                  <select name="WednesdayEmployee" class="form-control">
+                    <option th:each="employee : ${employees}" th:value="${employee.eID}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Thursday</b></td>
+                <td>
+                  <select name="ThursdayEmployee" class="form-control">
+                    <option th:each="employee : ${employees}" th:value="${employee.eID}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td><b>Friday</b></td>
+                <td>
+                  <select name="FridayEmployee" class="form-control">
+                    <option th:each="employee : ${employees}" th:value="${employee.eID}" th:text="${employee.efName} + ' ' + ${employee.elName}"></option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <button type="submit" class="btn btn-primary">Submit Schedule</button>
+        </form>
+</div>
+
+
   </div>
     
 </div>
 </div>
+
+<script>
+  $(function() {
+    $('#weekNumberButton').on('click', function() {
+      $('#weekNumber').datepicker('show');
+    });
+    $('#weekNumber').datepicker({
+      format: 'dd/mm/yyyy',
+      autoclose: true,
+      dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      dayNamesMin: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      firstDay: 1,
+      prevText: 'Previous',
+      nextText: 'Next'
+    });
+  });
+</script>
+
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">
     <div class="container px-4 px-lg-5 mt-5 bg-dark">
