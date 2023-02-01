@@ -1,22 +1,17 @@
 package com.prototype.demo.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.stereotype.Service;
-
 import com.prototype.demo.model.Gemba;
+import com.prototype.demo.dao.GembaRepo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class GembaService {
 
-    private List<Gemba> gembas = new ArrayList<>();
+    @Autowired
+    private GembaRepo gembaRepository;
 
-    public void saveGembaInformation(Gemba gemba) {
-        gembas.add(gemba);
-    }
-
-    public List<Gemba> getAllGembaInformation() {
-        return gembas;
+    public void saveGemba(Gemba gemba) {
+        gembaRepository.save(gemba);
     }
 }

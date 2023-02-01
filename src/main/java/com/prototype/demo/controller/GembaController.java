@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.prototype.demo.model.Gemba;
@@ -35,9 +34,5 @@ public class GembaController {
         return "gemba";
     }
 
-    @PostMapping("/gemba")
-    public String saveGembaInformation(Gemba gemba) {
-        gembaService.saveGembaInformation(gemba);
-        return "redirect:/gemba";
-    }
+
 }

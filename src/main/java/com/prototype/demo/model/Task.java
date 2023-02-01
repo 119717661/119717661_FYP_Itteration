@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -29,18 +27,7 @@ public class Task {
     @JoinColumn(name="proc_id", referencedColumnName = "procID")
     private Process process;
     
-    @OneToOne(mappedBy = "task")
-    private Timer timer;
-
-    public Timer getTimer() {
-        return timer;
-    }
-
-    public void setTimer(Timer timer) {
-        this.timer = timer;
-    }
-
-    public Process getProcess() {
+     public Process getProcess() {
         return process;
     }
 
@@ -66,7 +53,7 @@ public class Task {
 
     @Override
     public String toString() {
-        return "Task [taskid=" + taskid + ", taskname=" + taskname + ", process=" + process + ", timer=" + timer + "]";
+        return "Task [taskid=" + taskid + ", taskname=" + taskname + ", process=" + process + "]";
     }
 
 
