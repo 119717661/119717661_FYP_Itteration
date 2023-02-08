@@ -14,11 +14,11 @@ public class Schedule {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    private Employee employee;
+    public Employee employee;
 
     @ManyToOne
     @JoinColumn(name = "week_id")
-    private Week week;
+    public Week week;
 
     public Long getId() {
         return id;

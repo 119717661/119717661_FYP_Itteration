@@ -35,14 +35,13 @@ public void writeSheduleToCsv(List<Schedule> schedules, Writer writer) {
     
     try (CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
         for (Schedule schedule : schedules) {
-        printer.printRecord(schedule.getId(), schedule.getDay(), schedule.getEmployee(),
-        schedule.getWeek());
+        printer.printRecord(schedule.getId(), schedule.employee.getEfName(), schedule.employee.getElName(),
+        schedule.week.getWeekNumber());
         }
     }
     } catch (IOException e) {
     e.printStackTrace();
     }
     }
-
 
 }
