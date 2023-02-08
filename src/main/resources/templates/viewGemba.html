@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link th:href="@{/style/main.css}" rel="stylesheet" />
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
@@ -17,18 +18,28 @@
   <a href="/employee">Employees & Schedule</a>
   <a href="/process">Processes & Tasks</a>
   <a href="/gemba">Gemba</a>
-  <a class="active" href="/dashboard">Dashboard</a>
+  <a href="/dashboard">Dashboard</a>
 </div> 
 
   
-<center><h1> Dashboard </h1></center>
-<div class="container">
-  <div class="row ">
-        <iframe title="Chart for FYP" width="1200" height="600" src="https://app.powerbi.com/reportEmbed?reportId=1b607b0f-1192-4c6d-9b24-31160aa39dbe&autoAuth=true&ctid=46fe5ca5-866f-4e42-92e9-ed8786245545" frameborder="0" allowFullScreen="true"></iframe>
-   </div>
-</div>
-  
-<footer class="container-fluid bg-4 text-center">
+<center><h2> Gemba stuff </h2><br>
+    <table id="gembaTable" class="table table-striped">
+        <tr>
+          <th>Task ID</th>
+          <th>Task Name</th>
+          <th>Process Name</th>
+          <th>Time of Task</th>
+        </tr>
+        <tr th:each="gemba : ${gembas}">
+          <td th:text="${gemba.taskID}"></td>
+          <td th:text="${gemba.taskName}"></td>
+          <td th:text="${gemba.processName}"></td>
+          <td th:text="${gemba.timeOfTask}"></td>
+        </tr>
+      </table>
+</center><hr>
+
+<footer class="container-fluid bg-4 text-center sticky-bottom">
   <section class="py-1">
     <div class="container px-4 px-lg-5 mt-5 bg-dark">
       <div class="row gx-4 gx-lg-5 justify-content-lg-start">

@@ -8,6 +8,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.springframework.stereotype.Component;
 
 import com.prototype.demo.model.Employee;
+import com.prototype.demo.model.Schedule;
 
 
 @Component
@@ -27,6 +28,21 @@ try (CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
 e.printStackTrace();
 }
 }
+
+
+public void writeSheduleToCsv(List<Schedule> schedules, Writer writer) {
+    try {
+    
+    try (CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
+        for (Schedule schedule : schedules) {
+        printer.printRecord(schedule.getId(), schedule.getDay(), schedule.getEmployee(),
+        schedule.getWeek());
+        }
+    }
+    } catch (IOException e) {
+    e.printStackTrace();
+    }
+    }
 
 
 }

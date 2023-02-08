@@ -21,7 +21,17 @@ public class Task {
 
     @Column(name="taskName", nullable=false)
     private String taskname;
+
+    private String timeOfTask;
     
+
+    public String getTimeOfTask() {
+        return timeOfTask;
+    }
+
+    public void setTimeOfTask(String timeOfTask) {
+        this.timeOfTask = timeOfTask;
+    }
 
     @ManyToOne
     @JoinColumn(name="proc_id", referencedColumnName = "procID")
@@ -55,7 +65,6 @@ public class Task {
     public String toString() {
         return "Task [taskid=" + taskid + ", taskname=" + taskname + ", process=" + process + "]";
     }
-
 
     
 }
