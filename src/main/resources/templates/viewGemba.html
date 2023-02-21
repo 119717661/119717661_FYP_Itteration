@@ -23,30 +23,66 @@
 
   
 <div class="container">
-  <h1>Gemba Information</h1>
-  <table class="table table-striped" id="gembaTable">
-    <thead>
-      <tr>
-        <th>Task ID</th>
-        <th>Task Name</th>
-        <th>Process Name</th>
-        <th>Time of Task</th>
-        <th>Date</th>
-        <th>List Number</th>
-      </tr>
+  <h1>Gemba Data</h1>
+
+  <label for="gembaList">Select Gemba List:</label>
+<select id="gembaList" name="gembaList" class="form-control form-control-lg">
+    <option value="" disabled selected>Please select a Gemba List</option>
+    <option th:each="gembaList : ${gembaLists}" th:value="${gembaList.gembaListid}" th:text="${gembaList.listNumber}"></option>
+</select>
+
+
+<div class="table-responsive">
+  <table id="gembaTable" class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>List ID</th>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Process Name</th>
+            <th>Time of Task</th>
+            <th>Date</th>
+        </tr>
     </thead>
     <tbody>
-      <tr th:each="gemba : ${gembas}">
-        <td th:text="${gemba.taskId}"></td>
-        <td th:text="${gemba.taskName}"></td>
-        <td th:text="${gemba.process.procName}"></td>
-        <td th:text="${gemba.timeOfTask}"></td>
-        <td th:text="${gemba.date}"></td>
-        <td th:text="${gemba.gembaList.listNumber}" class="listNumber"></td>
+      <tr th:each="gemba : ${gemba}">
+          <td class="text-center list-id" th:text="${gemba.gembaList.gembaListid}"></td>
+          <td th:text="${gemba.taskID}"></td>
+          <td th:text="${gemba.taskname}"></td>
+          <td th:text="${gemba.processName}"></td>
+          <td th:text="${gemba.timeOfTask}"></td>
+          <td th:text="${gemba.date}"></td>
       </tr>
-    </tbody>
-  </table>
+  </tbody>
+  
+</table>
+
 </div>
+
+</div>
+
+<script type="text/javascript">
+const select = document.querySelector('#gembaList');
+const table = document.querySelector('#gembaTable');
+
+select.addEventListener('change', () => {
+    table.style.display = '';
+
+    const selectedListId = select.options[select.selectedIndex].value;
+
+    for (const row of table.rows) {
+        const listIdCell = row.querySelector('.list-id');
+        if (listIdCell) {
+            if (listIdCell.textContent === selectedListId) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        }
+    }
+});
+
+</script>
 
 
 
