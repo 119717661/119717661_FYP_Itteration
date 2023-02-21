@@ -48,11 +48,17 @@ public class TaskController {
     }
 
     @PostMapping("/addTask")
-public String addTask(@ModelAttribute Task task, @RequestParam("process-select") Long procID) {
-    Process process = processService.getProcessById(procID);
-    task.setProcess(process);
-    taskService.save(task);
-    return "redirect:/showAllTasks";
-}
-
+    public String addTask(@RequestParam("process-select") Long procID, @RequestParam("taskName") List<String> taskNames) {
+        Process process = processService.getProcessById(procID);
+    
+        for (String taskName : taskNames) {
+            Task task = new Task();
+            task.setTaskname(taskName);
+            task.setProcess(process);
+            taskService.save(task);
+        }
+    
+        return "redirect:/showAllTasks";
+    }
+    
 }

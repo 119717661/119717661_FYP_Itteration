@@ -56,7 +56,7 @@
 
 <!-- Table for  -->
 <form th:action="@{/saveGembaData}" th:method="post">
-  <input type="hidden" class="form-control" id="weekNumber" name="weekNumber" value="1">
+  <input type="hidden" class="form-control" id="weekNumber" name="weekNumber">
   <table id="taskTable" class="table table-striped" style="display: none">
     <tr>
       <th>Task ID</th>
@@ -142,11 +142,14 @@ select.addEventListener('change', () => {
   }
 });
 
-
+//weekNumber - assign date and time to the form
 const weekNumberInput = document.querySelector('#weekNumber');
 
 form.addEventListener('submit', () => {
-  weekNumberInput.value = parseInt(weekNumberInput.value) + 1;
+  const currentDate = new Date();
+  const formattedDate = currentDate.getFullYear() + '-' + ('0' + (currentDate.getMonth() + 1)).slice(-2) + '-' + ('0' + currentDate.getDate()).slice(-2);
+  const formattedTime = ('0' + currentDate.getHours()).slice(-2) + ':' + ('0' + currentDate.getMinutes()).slice(-2);
+  weekNumberInput.value = 'Task for Date: ' + formattedDate + ' & ' + formattedTime;
 });
 
 

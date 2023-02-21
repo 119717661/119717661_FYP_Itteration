@@ -56,30 +56,33 @@ GembaListRepo gembaListRepository;
 
 
 
-  @PostMapping("/saveGembaData")
-  public String saveSchedule(@RequestParam("weekNumber") String weekNumber, @RequestParam("taskid") List<String> taskIds,
-      @RequestParam("taskname") List<String> taskNames, @RequestParam("processName") List<String> processNames, 
-      @RequestParam("timeOfTask") List<String> timesOfTask, @RequestParam("date") List<String> dates) {
-      
-      // Create a new GembaList and save it
-      GembaList gembaList = new GembaList();
-      gembaList.setListNumber(weekNumber);
-      gembaListRepository.save(gembaList);
+    @PostMapping("/saveGembaData")
+    public String saveSchedule(@RequestParam("weekNumber") String weekNumber, @RequestParam("taskid") List<String> taskIds,
+        @RequestParam("taskname") List<String> taskNames, @RequestParam("processName") List<String> processNames, 
+        @RequestParam("timeOfTask") List<String> timesOfTask, @RequestParam("date") List<String> dates) {
+        
+   
+        GembaList gembaList = new GembaList();
+        gembaList.setListNumber(weekNumber);
+        gembaListRepository.save(gembaList);
     
-      // Create a Gemba record for each task and save it
-      for (int i = 0; i < taskIds.size(); i++) {
-          Gemba gemba = new Gemba();
-          gemba.setTaskID(taskIds.get(i));
-          gemba.setTaskname(taskNames.get(i));
-          gemba.setProcessName(processNames.get(i));
-          gemba.setTimeOfTask(timesOfTask.get(i));
-          gemba.setDate(dates.get(i));
-          gemba.setGembaList(gembaList); // set the GembaList for each Gemba record
-          gembaRepository.save(gemba);
-      }
-      
-      return "redirect:/viewGemba";
-  }
+     
+        for (int i = 0; i < taskIds.size(); i++) {
+            if (timesOfTask.get(i) != null && !timesOfTask.get(i).isEmpty()) {
+                Gemba gemba = new Gemba();
+                gemba.setTaskID(taskIds.get(i));
+                gemba.setTaskname(taskNames.get(i));
+                gemba.setProcessName(processNames.get(i));
+                gemba.setTimeOfTask(timesOfTask.get(i));
+                gemba.setDate(dates.get(i));
+                gemba.setGembaList(gembaList); 
+                gembaRepository.save(gemba);
+            }
+        }
+        
+        return "redirect:/viewGemba";
+    }
+    
   
 
 

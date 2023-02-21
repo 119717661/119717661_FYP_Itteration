@@ -7,9 +7,38 @@
   <link th:href="@{/style/main.css}" rel="stylesheet" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
   <title>Lean Web App</title>
-  
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    main {
+      flex: 1;
+    }
+    
+    .dashboard-wrapper {
+      position: relative;
+      overflow: hidden;
+      padding-top: 56.25%;
+    }
+    
+    .dashboard-iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
  <!-- The navigation menu -->
@@ -19,15 +48,12 @@
   <a href="/gemba">Gemba</a>
   <a class="active" href="/dashboard">Dashboard</a>
 </div> 
-
-  
 <center><h1> Dashboard </h1></center>
-<div class="container">
-  <div class="row ">
-        <iframe title="Chart for FYP" width="1200" height="600" src="https://app.powerbi.com/reportEmbed?reportId=1b607b0f-1192-4c6d-9b24-31160aa39dbe&autoAuth=true&ctid=46fe5ca5-866f-4e42-92e9-ed8786245545" frameborder="0" allowFullScreen="true"></iframe>
-   </div>
-</div>
-  
+<main>
+  <div class="container dashboard-wrapper">
+    <iframe title="Chart for FYP" class="dashboard-iframe" src="https://app.powerbi.com/reportEmbed?reportId=1b607b0f-1192-4c6d-9b24-31160aa39dbe&autoAuth=true&ctid=46fe5ca5-866f-4e42-92e9-ed8786245545" frameborder="0" allowFullScreen="true"></iframe>
+  </div>
+</main>
 <footer class="container-fluid bg-4 text-center">
   <section class="py-1">
     <div class="container px-4 px-lg-5 mt-5 bg-dark">
@@ -54,6 +80,5 @@
     <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
   </div>
 </footer>
-
 </body>
 </html>
