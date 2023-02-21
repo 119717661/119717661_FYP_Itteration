@@ -22,22 +22,33 @@
 </div> 
 
   
-<center><h2> Gemba stuff </h2><br>
-    <table id="gembaTable" class="table table-striped">
-        <tr>
-          <th>Task ID</th>
-          <th>Task Name</th>
-          <th>Process Name</th>
-          <th>Time of Task</th>
-        </tr>
-        <tr th:each="gemba : ${gembas}">
-          <td th:text="${gemba.taskID}"></td>
-          <td th:text="${gemba.taskName}"></td>
-          <td th:text="${gemba.processName}"></td>
-          <td th:text="${gemba.timeOfTask}"></td>
-        </tr>
-      </table>
-</center><hr>
+<div class="container">
+  <h1>Gemba Information</h1>
+  <table class="table table-striped" id="gembaTable">
+    <thead>
+      <tr>
+        <th>Task ID</th>
+        <th>Task Name</th>
+        <th>Process Name</th>
+        <th>Time of Task</th>
+        <th>Date</th>
+        <th>List Number</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="gemba : ${gembas}">
+        <td th:text="${gemba.taskId}"></td>
+        <td th:text="${gemba.taskName}"></td>
+        <td th:text="${gemba.process.procName}"></td>
+        <td th:text="${gemba.timeOfTask}"></td>
+        <td th:text="${gemba.date}"></td>
+        <td th:text="${gemba.gembaList.listNumber}" class="listNumber"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 
 <footer class="container-fluid bg-4 text-center sticky-bottom">
   <section class="py-1">

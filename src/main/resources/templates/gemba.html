@@ -55,26 +55,30 @@
 <hr>
 
 <!-- Table for  -->
-<form th:action="@{/saveGemba}" th:method="post">
-<table id="taskTable" class="table table-striped" style="display: none">
-  <tr>
-    <th>Task ID</th>
-    <th>Task Name</th>
-    <th>Process Name</th>
-    <th>Time of Task</th>
-  </tr>
-  <tr th:each="task : ${tasks}">
-    <td th:text="${task.taskid}"></td>
-    <td th:text="${task.taskname}"></td>
-    <td th:text="${task.process.procName}" class="process-name"></td>
-    <td class="time-of-task" id="time-of-task-{{task.taskid}}"></td>
-  </tr>
-  
-</table>
-<div class="form-group">
-    <button type="submit" class="btn btn-primary">Save Times of Task for This Process</button>
-</div>
-</form>
+<form th:action="@{/saveGembaData}" th:method="post">
+  <input type="text" class="form-control" id="weekNumber" name="weekNumber" required>
+  <table id="taskTable" class="table table-striped" style="display: none">
+    <tr>
+      <th>Task ID</th>
+      <th>Task Name</th>
+      <th>Process Name</th>
+      <th>Time of Task</th>
+      <th>Date</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+      <td th:text="${task.taskid}"></td>
+      <td th:text="${task.taskname}"></td>
+      <td th:text="${task.process.procName}" class="process-name"></td>
+      <td class="time-of-task" id="time-of-task-{{task.taskid}}"></td>
+      <td class="todayday" th:text="${date}"></td>
+    </tr>
+    
+  </table>
+  <div class="form-group">
+      <button type="submit" id="submitformbutton" class="btn btn-primary">Save Times of Task for This Process</button>
+  </div>
+  </form>
+
 <br>
 <br>
 
@@ -107,6 +111,8 @@
 
 <script type="text/javascript">
 
+
+
   // Selector 
   const select = document.querySelector('#process-select');
 const table = document.querySelector('.table');
@@ -126,6 +132,14 @@ select.addEventListener('change', () => {
     }
   }
 });
+
+//Date
+var today = new Date();
+var date = today.toISOString().slice(0,10);
+var dateCells = document.getElementsByClassName("todayday");
+for (var i = 0; i < dateCells.length; i++) {
+  dateCells[i].textContent = date;
+}
 
 
 //stopwatch

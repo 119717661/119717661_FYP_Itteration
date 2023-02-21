@@ -5,67 +5,82 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Gemba {
-@Id
-@Column(name="gembaID", nullable=false, unique=true)
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-private int gembaID;
-private int submissionCount; // new field
-public int getSubmissionCount() {
-    return submissionCount;
-}
+    @Id
+    @Column(name="gembaID", nullable=false, unique=true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long gembaID;
+    
+    private String taskID;
+    private String taskname;
+    private String processName;
+    private String timeOfTask;
+   
+    private String date;
 
-public void setSubmissionCount(int submissionCount) {
-    this.submissionCount = submissionCount;
-}
+    @ManyToOne
+    @JoinColumn(name = "gembaListid")
+    public GembaList gembaList;
 
-private long taskID;
-private String taskName;
-private String processName;
-private String timeOfTask;
+    public long getGembaID() {
+        return gembaID;
+    }
 
+    public void setGembaID(long gembaID) {
+        this.gembaID = gembaID;
+    }
 
-public int getGembaID() {
-    return gembaID;
-}
+    public String getTaskID() {
+        return taskID;
+    }
 
-public void setGembaID(int gembaID) {
-    this.gembaID = gembaID;
-}
+    public void setTaskID(String taskID) {
+        this.taskID = taskID;
+    }
 
-public long getTaskID() {
-    return taskID;
-}
+    public String getTaskname() {
+        return taskname;
+    }
 
-public void setTaskID(long taskID) {
-    this.taskID = taskID;
-}
+    public void setTaskname(String taskname) {
+        this.taskname = taskname;
+    }
 
-public String getTaskName() {
-    return taskName;
-}
+    public String getProcessName() {
+        return processName;
+    }
 
-public void setTaskName(String taskName) {
-    this.taskName = taskName;
-}
+    public void setProcessName(String processName) {
+        this.processName = processName;
+    }
 
-public String getProcessName() {
-    return processName;
-}
+    public String getTimeOfTask() {
+        return timeOfTask;
+    }
 
-public void setProcessName(String processName) {
-    this.processName = processName;
-}
+    public void setTimeOfTask(String timeOfTask) {
+        this.timeOfTask = timeOfTask;
+    }
 
-public String getTimeOfTask() {
-    return timeOfTask;
-}
+   
+    public String getDate() {
+        return date;
+    }
 
-public void setTimeOfTask(String timeOfTask) {
-    this.timeOfTask = timeOfTask;
-}
+    public void setDate(String date) {
+        this.date = date;
+    }
 
+    public GembaList getGembaList() {
+        return gembaList;
+    }
+
+    public void setGembaList(GembaList gembaList) {
+        this.gembaList = gembaList;
+    }
 
 }
