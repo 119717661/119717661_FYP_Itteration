@@ -1,6 +1,10 @@
 package com.prototype.demo.controller;
 
+import java.io.IOException;
 import java.util.List;
+
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +20,7 @@ import com.prototype.demo.model.GembaList;
 import com.prototype.demo.service.GembaService;
 import com.prototype.demo.service.ProcessService;
 import com.prototype.demo.service.TaskService;
+import com.prototype.demo.util.CsvFileGenerator;
 
 @Controller
 public class GembaController {
@@ -85,6 +90,15 @@ GembaListRepo gembaListRepository;
     
   
 
+    @Autowired
+    private CsvFileGenerator csvGenerator;
+    
+      @GetMapping("/gemba-to-csv")
+      public void exportIntoCSV(HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv");
+        response.addHeader("Content-Disposition", "attachment; filename=\"gemba.csv\"");
+        csvGenerator.writeGembaToCsv(gembaService.findAll(), response.getWriter());
+      }
 
 
     

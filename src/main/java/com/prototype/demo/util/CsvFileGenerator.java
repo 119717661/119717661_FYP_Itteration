@@ -8,6 +8,7 @@ import org.apache.commons.csv.CSVPrinter;
 import org.springframework.stereotype.Component;
 
 import com.prototype.demo.model.Employee;
+import com.prototype.demo.model.Gemba;
 import com.prototype.demo.model.Schedule;
 
 
@@ -43,5 +44,20 @@ public void writeSheduleToCsv(List<Schedule> schedules, Writer writer) {
     e.printStackTrace();
     }
     }
+
+
+    public void writeGembaToCsv(List<Gemba> gembas, Writer writer) {
+        try {
+        
+        try (CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT)) {
+            for (Gemba gemba : gembas) {
+            printer.printRecord(gemba.gembaList.getGembaListid(), gemba.getTaskname(),
+            gemba.getProcessName(), gemba.getTimeOfTask() , gemba.getDate());
+            }
+        }
+        } catch (IOException e) {
+        e.printStackTrace();
+        }
+        }   
 
 }

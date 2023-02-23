@@ -20,31 +20,17 @@ Telusko (no date) YouTube. YouTube. Available at: https://www.youtube.com/c/Telu
  */
 package com.prototype.demo;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.prototype.demo.model.Employee;
-import com.prototype.demo.service.EmployeeService;
 
 @SpringBootApplication
-public class BootjpaApplication implements CommandLineRunner {
+public class BootjpaApplication  {
 
-	@Autowired
-	private EmployeeService employeeService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(BootjpaApplication.class, args);
 	}
 
-	@Override
-	public void run(String...a) {
-	  
-		Employee employee = new Employee();
-		employee.setEfName("Luke");
-		employee.setElName("Field");
-		employee.seteType("Support");
-		employeeService.save(employee);
-	  
-	}
 }
