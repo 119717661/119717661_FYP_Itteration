@@ -1,76 +1,151 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link th:href="@{/style/main.css}" rel="stylesheet" />
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
   <title>Lean Web App</title>
+  <style>
+  body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+main {
+  flex: 1;
+  margin-top: 50px;
+}
+
+.navbar {
+  background: linear-gradient(to bottom, #000000, #1d1d1d, #3d3d3d);
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+.navbar li {
+  width: 25%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.navbar li a {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  display: table;
+  width: 100%;
+  margin: 0;
+}
+
+.navbar-nav > li {
+  display: table-cell;
+  float: none;
+  text-align: center;
+}
+
+
+.navbar-secondary {
+      background-color: #f5f5f5;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .navbar-secondary .navbar-nav > li > a {
+      color: #333;
+      font-weight: bold;
+    }
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer-alt {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+  </style>
 </head>
 <body>
- <!-- The navigation menu -->
- <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a class="active" href="/employee">Employees & Schedule</a>
-  <a href="/process">Processes & Tasks</a>
-  <a href="/gemba">Gemba</a>
-  <a href="/dashboard">Dashboard</a>
-</div> 
+  <nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container-fluid">
+			<ul class="nav navbar-nav">
+				<li><a href="/employee">Employees & Schedule</a></li>
+				<li><a href="/process">Processes & Tasks</a></li>
+				<li><a href="/gemba">Gemba</a></li>
+				<li><a href="/dashboard">Dashboard</a></li>
+			</ul>
+		</div>
+	</nav>
 
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+				</button>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li><a href="/addEmployee">Add New Employee</a></li>
+					<li><a href="/showAllEmployees">Show All Employees</a></li>
+					<li><a href="/schedule">Schedule Operations</a></li>
+					<li><a href="/view-schedule">View Schedule</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+ <main class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="text-center">Employee Page</h2>
+        <p class="text-center">Please Select Operation from the Left Navigation Bar</p>
+      </div>
+    </div>
+  </main>
   
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-2 sidenav bg-gray-300">
-      <div class="list-group mt-2">
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/addEmployee">Add New Employee</a>
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/showAllEmployees">Show All Employees</a>
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/schedule">Schedule Operations</a>
-        <a class="list-group-item list-group-item-action text-dark font-weight-bold" href="/view-schedule">View Schedule</a>
-      </div>
-    </div>
-    
-    <div class="col-sm-8 text-left"> 
-     <h2> Employee Page. </h2>
-        
-<br>
-    <p>
-      Select Task Related to Employees from the Side Navigation.
-    </p>
-
-<hr>
-    </div>
-  </div>
-  </div>
-  <footer class="container-fluid bg-4 text-center">
-    <section class="py-1">
-      <div class="container px-4 px-lg-5 mt-5 bg-dark">
-        <div class="row gx-4 gx-lg-5 justify-content-lg-start">
-          <div class="col mb-5">
-              <div class="card bg-dark text-white border-0">
-                  <div class="text-lg-start">
-                      <b>Contact Details:</b><br>
-                      <div class="text-lg-start">
-                        <p>Phone : 087xxxx60</p>
-                        <p>E-mail : 119717661@umail.ucc.ie</p>
-                    </div>
-                  </div>
-                  <hr>
-              </div>
-        </div>
-        <div class="col mb-5 float-right ms-auto">
-          <div class="card h-10 bg-dark text-white border-0"></div>
-        </div>
+   <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Contact Details:</p>
+          <p>Phone: 087xxxx60</p>
+          <p>E-mail: 119717661@umail.ucc.ie</p>
         </div>
       </div>
-    </section>
-    <div class="container py-4 bg-light">
-      <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
     </div>
   </footer>
-  
-  </body>
-  </html>
-  
+  <footer class="footer-alt">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Made for University College Cork &copy;</p>
+          <p>Created by: Piotr Janus</p>
+        </div>
+      </div>
+    </div>
+</body>
+</html>

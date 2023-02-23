@@ -4,56 +4,115 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <link th:href="@{/style/main.css}" rel="stylesheet" />
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
   <title>Lean Web App</title>
+  <style>
+    body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  margin-top: 50px;
+}
+
+.navbar {
+  background: linear-gradient(to bottom, #000000, #1d1d1d, #3d3d3d);
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+.navbar li {
+  width: 25%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.navbar li a {
+  color: white;
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+}
+
+.navbar-nav {
+  display: table;
+  width: 100%;
+  margin: 0;
+}
+
+.navbar-nav > li {
+  display: table-cell;
+  float: none;
+  text-align: center;
+}
+
+.footer {
+  background-color: black;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.footer p {
+  margin: 5px 0;
+}
+
+.footer-alt {
+  background-color: white;
+  color: black;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
+}
+
+  </style>
   
 </head>
 <body>
- <!-- The navigation menu -->
- <div nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a href="/employee">Employees & Schedule</a>
-  <a href="/process">Processes & Tasks</a>
-  <a href="/gemba">Gemba</a>
-  <a href="/dashboard">Dashboard</a>
-</div> 
+  <!-- The navigation menu -->
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <ul class="nav navbar-nav">
+      <li><a href="/employee">Employees & Schedule</a></li>
+      <li><a href="/process">Processes & Tasks</a></li>
+      <li><a href="/gemba">Gemba</a></li>
+      <li><a href="/dashboard">Dashboard</a></li>
+    </ul>
+  </nav> 
 
-  
-<center><h2> HomePage </h2><br>
-        <p>
-        Please Select Operation fron the Top Navigation Bar
-        </p>
-</center><hr>
-
-<footer class="container-fluid bg-4 text-center sticky-bottom">
-  <section class="py-1">
-    <div class="container px-4 px-lg-5 mt-5 bg-dark">
-      <div class="row gx-4 gx-lg-5 justify-content-lg-start">
-        <div class="col mb-5">
-            <div class="card bg-dark text-white border-0">
-                <div class="text-lg-start">
-                    <b>Contact Details:</b><br>
-                    <div class="text-lg-start">
-                      <p>Phone : 087xxxx60</p>
-                      <p>E-mail : 119717661@umail.ucc.ie</p>
-                  </div>
-                </div>
-                <hr>
-            </div>
-      </div>
-      <div class="col mb-5 float-right ms-auto">
-        <div class="card h-10 bg-dark text-white border-0"></div>
-      </div>
+  <main class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="text-center">Home Page</h2>
+        <p class="text-center">Please Select Operation from the Top Navigation Bar</p>
       </div>
     </div>
-  </section>
-  <div class="container py-4 bg-light">
-    <p class="m-0 text-center text-black">Made for University College Cork &copy; <br> Created by: Piotr Janus</p>
-  </div>
-</footer>
+  </main>
 
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Contact Details:</p>
+          <p>Phone: 087xxxx60</p>
+          <p>E-mail: 119717661@umail.ucc.ie</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <footer class="footer-alt">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Made for University College Cork &copy;</p>
+          <p>Created by: Piotr Janus</p>
+        </div>
+      </div>
+    </div>
 </body>
 </html>
