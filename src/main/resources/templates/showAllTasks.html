@@ -63,17 +63,23 @@
                 <th>Task ID</th>
                 <th>Task Name</th>
                 <th>Process Name</th>
+                <th>Actions</th>
               </tr>
               <tr th:each="task : ${tasks}">
                 <td th:text="${task.taskid}"></td>
                 <td th:text="${task.taskname}"></td>
                 <td th:text="${task.process.procName}"></td>
+                <td>
+                  <a th:href="@{/editTask/{id}(id=${task.taskid})}" class="btn btn-primary">Edit</a>
+                  <a th:href="@{/deleteTask/{id}(id=${task.taskid})}" onclick="return confirm('Are you sure you want to delete this Task?');" class="btn btn-danger">Delete</a>
+                </td>
               </tr>
             </table>
           </div>
          </div>
     </div>
   </main>
+  
   
    <footer class="footer">
     <div class="container">

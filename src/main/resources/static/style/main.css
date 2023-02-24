@@ -105,7 +105,9 @@ main {
   }
 }
 
-
+.time-of-task {
+  min-width: 80px;
+}
   
   .footer {
     background-color: black;

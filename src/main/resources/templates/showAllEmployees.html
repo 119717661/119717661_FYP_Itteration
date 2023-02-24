@@ -63,20 +63,30 @@
             <div class="row">
               <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 <table class="table table-striped">
-                  <tr><b>
-                    <th>ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Type</th>
-                    </b>
+                  <tr>
+                      <th>ID</th>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Type</th>
+                      <th>Actions</th>
+                     
                   </tr>
                   <tr th:each="employee : ${employees}">
-                    <td th:text="${employee.eID}"></td>
-                    <td th:text="${employee.efName}"></td>
-                    <td th:text="${employee.elName}"></td>
-                    <td th:text="${employee.eType}"></td>
+                      <td th:text="${employee.eID}"></td>
+                      <td th:text="${employee.efName}"></td>
+                      <td th:text="${employee.elName}"></td>
+                      <td th:text="${employee.eType}"></td>
+                      <td>
+                          <a th:href="@{/editEmployee/{id}(id=${employee.eID})}">
+                              <button class="btn btn-primary btn-sm">Edit</button>
+                          </a>
+                          <a th:href="@{/deleteEmployee/{id}(id=${employee.eID})}" onclick="return confirm('Are you sure you want to delete this employee?');">
+                              <button class="btn btn-danger btn-sm">Delete</button>
+                          </a>
+                      </td>
                   </tr>
-                </table>
+              </table>
+              
               </div>
               <p>Click the button below to export the CSV file.</p>
               <a href="http://localhost:8080/export-to-csv" class="btn btn-primary">Employee.CSV Download</a>

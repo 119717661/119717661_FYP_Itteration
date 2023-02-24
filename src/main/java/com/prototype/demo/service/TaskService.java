@@ -24,5 +24,22 @@ public Task save(Task task) {
   }
 
 
+  public Task getTaskById(Long id) {
+    return taskRepository.findById(id)
+            .orElseThrow(() -> new IllegalArgumentException("Task not found with id: " + id));
+}
 
+public void updateTask(Task task) {
+    Task existingTask = taskRepository.findById(task.getTaskid())
+            .orElseThrow(() -> new IllegalArgumentException("Task not found with id: " + task.getTaskid()));
+
+    existingTask.setTaskname(task.getTaskname());
+    existingTask.setProcess(task.getProcess());
+
+    taskRepository.save(existingTask);
+}
+
+public void deleteTaskById(Long id) {
+    taskRepository.deleteById(id);
+}
 }

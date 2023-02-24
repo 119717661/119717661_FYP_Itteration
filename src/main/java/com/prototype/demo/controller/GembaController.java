@@ -85,7 +85,7 @@ GembaListRepo gembaListRepository;
             }
         }
         
-        return "redirect:/viewGemba";
+        return "redirect:/gemba";
     }
     
   

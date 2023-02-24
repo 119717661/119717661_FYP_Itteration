@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -57,6 +58,32 @@ public class EmployeeController {
       List<Employee> employees = employeeService.findAll();
       model.addAttribute("employees", employees);
       return "schedule";
+  }
+  
+
+  @GetMapping("/editEmployee/{id}")
+  public String editEmployeeForm(@PathVariable("id") long id, Model model) {
+      Employee employee = employeeService.getEmployeeById(id);
+      model.addAttribute("employee", employee);
+      return "editEmployee";
+  }
+
+  @PostMapping("/editEmployee/{id}")
+  public String editEmployee(@PathVariable("id") long id, @ModelAttribute Employee employee, Model model) {
+      Employee existingEmployee = employeeService.getEmployeeById(id);
+      existingEmployee.setEfName(employee.getEfName());
+      existingEmployee.setElName(employee.getElName());
+      existingEmployee.seteType(employee.geteType());
+      employeeService.save(existingEmployee);
+      model.addAttribute("employees", employeeService.findAll());
+      return "showAllEmployees";
+  }
+
+  @GetMapping("/deleteEmployee/{id}")
+  public String deleteEmployee(@PathVariable("id") long id, Model model) {
+      employeeService.deleteById(id);
+      model.addAttribute("employees", employeeService.findAll());
+      return "showAllEmployees";
   }
   
   @Autowired

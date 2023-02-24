@@ -52,7 +52,6 @@
     </div>
   </div>
 </nav>
-  
 <main class="container mx-auto">
   <div class="row">
     <div class="col-sm-8 mx-auto">
@@ -62,16 +61,25 @@
               <tr>
                   <th>ID</th>
                   <th>Name</th>
+                  <th>Actions</th>
               </tr>
               <tr th:each="process : ${processes}" class="mb-2">
                   <td th:text="${process.procID}"></td>
                   <td th:text="${process.procName}"></td>
+                  <td>
+                    <a th:href="@{/editProcess/{id}(id=${process.procID})}" class="btn btn-primary">Edit</a>
+                    <a th:href="@{/deleteProcess/{id}(id=${process.procID})}" onclick="return confirm('Removing this Process will delete all the tasks and data related to it. Are you sure you want to delete it?')" class="btn btn-danger">Delete</a>
+                  </td>
               </tr>
             </table>
           </div>
       </div>
     </div>
-  </main>
+</main>
+
+  
+
+  
   
    <footer class="footer">
     <div class="container">

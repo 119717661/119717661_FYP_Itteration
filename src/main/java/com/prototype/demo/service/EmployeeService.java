@@ -7,6 +7,7 @@ import com.prototype.demo.model.Employee;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -24,4 +25,13 @@ public class EmployeeService {
   public Employee save(Employee employee) {
     return employeeRepository.save(employee);
   }
+  public Employee getEmployeeById(Long procID) {
+    return employeeRepository.findById(procID).orElse(null);
+}
+
+public void deleteById(long id) {
+    employeeRepository.deleteById(id);
+}
+
+
 }

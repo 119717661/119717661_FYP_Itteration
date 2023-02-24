@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import com.prototype.demo.model.Process;
@@ -48,5 +49,25 @@ public class ProcessController {
       return "redirect:/showAllProcesses";
     }
 
+    @GetMapping("/deleteProcess/{id}")
+    public String deleteProcess(@PathVariable("id") Long id) {
+        processService.deleteProcessById(id);
+        return "redirect:/showAllProcesses";
+    }
     
+    
+@GetMapping("/editProcess/{id}")
+public String showEditProcessForm(@PathVariable("id") Long id, Model model) {
+    Process process = processService.getProcessById(id);
+    model.addAttribute("process", process);
+    return "editProcessForm";
+}
+
+@PostMapping("/updateProcess")
+public String updateProcess(@ModelAttribute("process") Process process) {
+    processService.updateProcess(process);
+    return "redirect:/showAllProcesses";
+}
+
+
 }

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -60,5 +61,27 @@ public class TaskController {
     
         return "redirect:/showAllTasks";
     }
+
+@GetMapping("/editTask/{id}")
+public String editTaskForm(@PathVariable("id") Long id, Model model) {
+    Task task = taskService.getTaskById(id);
+    List<Process> processes = processService.getAllProcesses();
+    model.addAttribute("task", task);
+    model.addAttribute("processes", processes);
+    return "editTaskModal";
+}
+
+
+@PostMapping("/editTask")
+public String editTask(@ModelAttribute("task") Task task) {
+    taskService.updateTask(task);
+    return "redirect:/showAllTasks";
+}
+
+@GetMapping("/deleteTask/{id}")
+public String deleteTask(@PathVariable("id") Long id) {
+    taskService.deleteTaskById(id);
+    return "redirect:/showAllTasks";
+}
     
 }
